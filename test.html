@@ -8,6 +8,7 @@
 		<script type="text/javascript">
 			var $j = jQuery.noConflict();
 		</script>
+		<script src="lavaflow.js" type="text/javascript"></script>
 		
 		<style type="text/css">
 			body{ 
@@ -16,22 +17,16 @@
 			}
 			#stage {
 				position: absolute;
-				top: 300px;
-				left: 400px;
-				background: black;
-				-webkit-transform-style: preserve-3d;
-				-webkit-perspective: 700px;
+				top: 200px;
+				left: 40%;
 			}
 			
 			#stage div { 
-				position: absolute;
-				left: 0px;
-				top: -125px; /* should be ~ half its height */
-				width: 250px; 
+				width: 200px; 
 				border: 1px solid black; 
+				-webkit-transform-style: preserve-3d;
 				-webkit-border-radius: 10px; 
-				-webkit-box-reflect:below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.25, transparent), to(rgba(0,0,0,0.5)));
-				-webkit-background-clip: padding-box;
+				-webkit-box-reflect:below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.25, transparent), to(rgba(0,0,0,0.2)));
 			}
 			#stage > :nth-child(odd) { background: red; }
 			#stage > :nth-child(even) { background: blue; }
@@ -44,30 +39,32 @@
 			}
 			
 			
-			#l3 { -webkit-transform: translateZ(-250px) translateX(-335px) rotateY(55deg) translateZ(3px); }
-				#l3 .mask { background: rgba(0,0,0,0.8); }
-			#l2 { -webkit-transform: translateZ(-225px) translateX(-260px) rotateY(55deg) translateZ(2px); }
-				#l2 .mask { background: rgba(0,0,0,0.2); }
-			#l1 { -webkit-transform: translateZ(-200px) translateX(-185px) rotateY(55deg) translateZ(1px); }
-				#l1 .mask { background: rgba(0,0,0,0.05); }
-			#c { background-color: green; }
-				#c .mask { display: none; }
-			#r1 { -webkit-transform: translateZ(-200px) translateX(215px) rotateY(-55deg) translateZ(-1px); }
-				#r1 .mask { background: rgba(0,0,0,0.05); }
-			#r2 { -webkit-transform: translateZ(-225px) translateX(290px) rotateY(-55deg) translateZ(-2px); }
-				#r2 .mask { background: rgba(0,0,0,0.2); }
-			#r3 { -webkit-transform: translateZ(-250px) translateX(365px) rotateY(-55deg) translateZ(-3px); }
-				#r3 .mask { background: rgba(0,0,0,0.8); }
+			/* Elements
+			#l3 { -webkit-transform: translate3d(-350px, 0px, -250px) rotateY(55deg); }
+			#l2 { -webkit-transform: translate3d(-275px, 0px, -250px) rotateY(55deg); }
+			#l1 { -webkit-transform: translate3d(-200px, 0px, -250px) rotateY(55deg); }
+			#c { }
+			#r1 { -webkit-transform: translate3d(200px, 0px, -250px) rotateY(-55deg); }
+			#r2 { -webkit-transform: translate3d(275px, 0px, -250px) rotateY(-55deg); }
+			#r3 { -webkit-transform: translate3d(350px, 0px, -250px) rotateY(-55deg); }
 			
+			/* Masks */
+			#l3 .mask { background: rgba(0,0,0,0.8); }
+			#l2 .mask { background: rgba(0,0,0,0.2); }
+			#l1 .mask { background: rgba(0,0,0,0.05); }
+			#c .mask { display: none; }
+			#r1 .mask { background: rgba(0,0,0,0.05); }
+			#r2 .mask { background: rgba(0,0,0,0.2); }
+			#r3 .mask { background: rgba(0,0,0,0.8); }
 			
 			
 				/* Animations... */
 				#stage div { 
 					/* cubic-bezier(x1, y1, x2, y2) where P0 and P1 are (0,0) and (1,1) repectively */
-					-webkit-transition: -webkit-transform 1s cubic-bezier(0, 0.7, 0.58, 1.0);
+					-webkit-transition: -webkit-transform 1s cubic-bezier(0, 0.7, 0.5, 1.0);
 				}
-				#stage div:hover { 
-					-webkit-transform: translateZ(-250px) translateX(-335px) rotateY(55deg) translateZ(3px);
+				.far_left { 
+					-webkit-transform: translateZ(-250px) translateX(-335px) rotateY(55deg) translateZ(3px) !important;
 				}
 			
 			
@@ -97,9 +94,9 @@
 			
 			nth OBJECT {
 				translateZ( -((width * .8) + |(n-1)|*25) px)
-				translateX( (width * .56) + n*75 px)
+				translateX( ((sign of n)(width * .56)) + n*75 px)
 				rotateY( -(sign of n)*55 deg)
-				translateX( -(n) px)
+				translateZ( -(n) px)
 			}
 			
 			.mask {
@@ -124,12 +121,12 @@
 	<body>
 		<div id="stage">
 			
-			<div id="l1">
+			<div id="l3">
 				<div class="mask"></div>
-				<h1>L1</h1>
+				<h1>L3</h1>
 				<p>The quick brown fox jumped over the lazy dog</p>
 				<ol>
-					<li>DAN</li>
+					<li>Daniel</li>
 					<li>john</li>
 					<li>Peter</li>
 					<li>$pinosa</li>
@@ -148,12 +145,12 @@
 				</ol>
 			</div>
 			
-			<div id="l3">
+			<div id="l1">
 				<div class="mask"></div>
-				<h1>L3</h1>
+				<h1>L1</h1>
 				<p>The quick brown fox jumped over the lazy dog</p>
 				<ol>
-					<li>Daniel</li>
+					<li>DAN</li>
 					<li>john</li>
 					<li>Peter</li>
 					<li>$pinosa</li>
