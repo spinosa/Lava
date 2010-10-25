@@ -1,0 +1,6 @@
+lavaFLOW
+
+It's like coverflow.  But it's for sets of HTML elements, using CSS3 (3D transforms and animation) and jQuery.
+
+limitations:
+Only works with Webkit based browsers (using -webkit- CSS prefixes) that build in CSS3 3D transforms and animation.  As of this writing, Safari 5.0.2 is the only fully compatible browser.  Chrome 7.0.517 does not have full 3D transition support out of the box (though animations and reflection seem correct).
