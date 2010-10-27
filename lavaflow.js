@@ -1,3 +1,29 @@
+function moveLeft(c) {
+	var container = $j(c);
+	var elements = container.children();
+	var width = elements.width();
+	
+	//initialize each element
+	var centerElementIndex = Math.floor(elements.length / 2) + 1;
+	var n, signOfN, transX, rotY;
+	
+	elements.each( function(index, el){ 
+		n = index - centerElementIndex;
+		
+		if( n == 0 ){
+			$j(el).css('-webkit-transform', 'none');
+		} else {
+			signOfN = Math.abs(n)/n;
+			transX = (signOfN * (width * .75)) + (n * width * .3);
+			rotY = -signOfN * 55;
+			
+			trans = 'translate3d('+transX+'px, 10%, -450px) rotateY('+rotY+'deg)';
+			$j(el).css('-webkit-transform', trans);
+		}
+		
+	});
+	
+}
 
 function lavaInit(c) {
 
@@ -40,5 +66,5 @@ function lavaInit(c) {
 }
 
 $j(function(){
-	lavaInit( $j("#stage") );
+	//lavaInit( $j("#stage") );
 });
