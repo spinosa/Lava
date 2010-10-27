@@ -72,34 +72,12 @@
 			/*
 			
 			TODO:
-				1) Design jquery plugin algo for core flow animation
-				2) Build jquery plugin (very basic)
-				3) Add functionality to jquery plugin
-			
-			Algorithm for above:
-			
-			Let n = object location along x-axis (moving left is negative) where n=0 is center object.
-			Let maxN = maximum number of objects shown to left or right of center object
-			
-			#stage { /* div holding all elements in LavaFlow
-				-webkit-transform-style: preserve-3d;
-				-webkit-perspective: 2.8*width;	
-			}
-			
-			.all-objects {
-				position: absolute;
-				top: -(width/2) px
-			}
+				- improve bezier function
+				- improve big moves (of +/- > 1)
+				+ Mask Functionality
+				+ Dynamic loading of new elements
 				
-			#center-object { }
-			
-			nth OBJECT {
-				translateZ( -((width * .8) + |(n-1)|*25) px)
-				translateX( ((sign of n)(width * .56)) + n*75 px)
-				rotateY( -(sign of n)*55 deg)
-				translateZ( -(n) px)
-			}
-			
+				
 			.mask {
 				position: absolute;
 				left: 0; top: 0;
@@ -205,6 +183,79 @@
 					<li>$pinosa</li>
 				</ol>
 			</div>
+			
+			<div>
+				<div class="mask"></div>
+				<h1>EXTRA</h1>
+				<p>The quick brown fox jumped over the lazy dog</p>
+				<ol>
+					<li>Daniel</li>
+					<li>john</li>
+					<li>Peter</li>
+					<li>$pinosa</li>
+				</ol>
+			</div>
+			
+			<div>
+				<div class="mask"></div>
+				<h1>EXTRA</h1>
+				<p>The quick brown fox jumped over the lazy dog</p>
+				<ol>
+					<li>Daniel</li>
+					<li>john</li>
+					<li>Peter</li>
+					<li>$pinosa</li>
+				</ol>
+			</div>
+			
+			<div>
+				<div class="mask"></div>
+				<h1>EXTRA</h1>
+				<p>The quick brown fox jumped over the lazy dog</p>
+				<ol>
+					<li>Daniel</li>
+					<li>john</li>
+					<li>Peter</li>
+					<li>$pinosa</li>
+				</ol>
+			</div>
+			
+			<div>
+				<div class="mask"></div>
+				<h1>EXTRA</h1>
+				<p>The quick brown fox jumped over the lazy dog</p>
+				<ol>
+					<li>Daniel</li>
+					<li>john</li>
+					<li>Peter</li>
+					<li>$pinosa</li>
+				</ol>
+			</div>
+			
+			<div>
+				<div class="mask"></div>
+				<h1>EXTRA</h1>
+				<p>The quick brown fox jumped over the lazy dog</p>
+				<ol>
+					<li>Daniel</li>
+					<li>john</li>
+					<li>Peter</li>
+					<li>$pinosa</li>
+				</ol>
+			</div>
+			
+			<div>
+				<div class="mask"></div>
+				<h1>EXTRA</h1>
+				<p>The quick brown fox jumped over the lazy dog</p>
+				<ol>
+					<li>Daniel</li>
+					<li>john</li>
+					<li>Peter</li>
+					<li>$pinosa</li>
+				</ol>
+			</div>
+			
 			
 		</div>
 		

@@ -6,8 +6,24 @@
 	// defaults & private methods
 	$.lava.lavaflow = {
 	
-		somePrivateMethod: function(str) {
-			//do things
+		centerElement: function(elements, centerElementIndex, width) {
+			var n, signOfN, transX, rotY;
+
+			elements.each( function(index, el){ 
+				n = index - centerElementIndex;
+
+				if( n == 0 ){
+					$(el).css('-webkit-transform', 'none');
+				} else {
+					signOfN = Math.abs(n)/n;
+					transX = (signOfN * (width * .75)) + (n * width * .3);
+					rotY = -signOfN * 55;
+
+					trans = 'translate3d('+transX+'px, 10%, -450px) rotateY('+rotY+'deg)';
+					$(el).css('-webkit-transform', trans);
+				}
+
+			});
 		},
 	
 		conf: {  
@@ -19,16 +35,14 @@
 			bezier_y2: 1.0
 		}
 	};
-	
-	//init w/ our funciton...
-	$.lava.lavaflow.somePrivateMethod('hey man!');
 
 	function LavaFlow(container, conf){
 
 		//private variables
 		var self = this,
 			elements = container.children(),
-			width = elements.width();	
+			width = elements.width(),
+			currentCenter = Math.floor(elements.length / 2);
 			
 		//API methods
 		$.extend(self, {
@@ -46,36 +60,28 @@
 											'bottom': '-100px',
 											'-webkit-transition': '-webkit-transform 1s cubic-bezier('+conf.bezier_x1+', '+conf.bezier_y1+', '+conf.bezier_x2+', '+conf.bezier_y2+')'});
 
-				//initialize each element
-				centerElementIndex = Math.floor(elements.length / 2);
-				var n, signOfN, transX, rotY;
-
-				elements.each( function(index, el){ 
-					n = index - centerElementIndex;
-
-					if( n == 0 ){
-						$(el).css('-webkit-transform', 'none');
-					} else {
-						signOfN = Math.abs(n)/n;
-						transX = (signOfN * (width * .75)) + (n * width * .3);
-						rotY = -signOfN * 55;
-
-						trans = 'translate3d('+transX+'px, 10%, -450px) rotateY('+rotY+'deg)';
-						$(el).css('-webkit-transform', trans);
-					}
-
-				});
+				//initialization: start with middle element centered
+				self.centerElementAt(currentCenter);
 									
 				return self;
 			},
 			
-			move: function(x){
-				//move this sucker!
+			move: function(x){ 
+				//XXX Might be smoother animation to move in repeated increments of +/-1
+				return self.centerElementAt(currentCenter + x);
 			},
 			
-			moveLeft: function(){ self.move(-1); },
+			slideLeft: function(){ return self.move(1); },
 			
-			moveRight: function(){ self.move(1); }
+			slideRight: function(){ return self.move(-1); },
+			
+			centerElementAt: function(index){ 
+				currentCenter = index;
+				if( currentCenter < 0 ){ currentCenter = 0; }
+				if( currentCenter >= elements.length){ currentCenter = elements.length - 1; }
+				$.lava.lavaflow.centerElement(elements, currentCenter, width);
+				return self;
+			}
 			
 		});
 			
