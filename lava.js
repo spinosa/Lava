@@ -29,10 +29,11 @@
 		conf: {  
 			load: true,
 			perspective_distance: '700px',
-			bezier_x1: 0,
-			bezier_y1: 0.7,
-			bezier_x2: 0.5,
-			bezier_y2: 1.0
+			bezier_x1: 0.1,
+			bezier_y1: 0.9,
+			bezier_x2: 0.1,
+			bezier_y2: 1.0,
+			bind_arrows: true
 		}
 	};
 
@@ -62,12 +63,17 @@
 
 				//initialization: start with middle element centered
 				self.centerElementAt(currentCenter);
+				
+				if( conf.bind_arrows && typeof jQuery.hotkeys == "object" ){
+					$(document).bind('keyup', 'right', function(){ self.slideRight() });
+					$(document).bind('keyup', 'left', function(){ self.slideLeft() });
+				}
 									
 				return self;
 			},
 			
 			move: function(x){ 
-				//XXX Might be smoother animation to move in repeated increments of +/-1
+				//Is there a smoother way to do this?  Currently elements run in front of each other out of order.
 				return self.centerElementAt(currentCenter + x);
 			},
 			
