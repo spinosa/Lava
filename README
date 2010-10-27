@@ -1,13 +1,37 @@
-lavaFLOW
-
+===lavaflow===
 It's like coverflow.  But it's for sets of HTML elements, using CSS3 (3D transforms and animation) and jQuery.
 
-Include jquery.hotkeys (http://github.com/tzuryby/jquery.hotkeys) with your project and the left and right arrows will be bound to sliding the elements left and right.  configuration parameter: bind_arrows
+===How To Use===
+<div id="wrapper">
+	<div>cover 1</div>
+	<div>cover 2</div>
+	<div>cover 3</div>
+</div>
 
-limitations:
+jQuery('#wrapper').lavaflow();
+
+
+===API===
+lavaflow is architected like jQuery Tools.  The intial call to lavaflow() initializes the plugin, configuration parameters can be passed in as a hash.  All calls to lavaflow() return the lavaflow API which can be used to chain additional calls, like slideLeft(), slideRight(), slide(x) or center().
+
+
+===Configure===
+load: true -- Autoload and init the plugin.  If set to false, you must call lavaflow().load() manually.
+
+perspective_distance: '700px' -- Distance the camera is from the Z-plane.  Greater values increase the perception of depth in the 3D transforms.  That is, the side cards will look further away.
+
+bezier_x1: 0.1, bezier_y1: 0.9, bezier_x2: 0.1, bezier_y2: 1.0 -- A cubic bezier transition is used there P0 and P3 are implicitly at (0,0) and (1,1) respectively.  Use these parameters to set the location of P1 and P2.
+
+transform_time: '1s' -- Time it takes for the bezier transform to run to completion.
+
+bind_arrows: true -- If you include jquery.hotkeys (http://github.com/tzuryby/jquery.hotkeys) with your project, the left and right arrows will be bound to sliding the elements left and right.
+
+
+===Limitations===
 Only works with Webkit based browsers (using -webkit- CSS prefixes) that build in CSS3 3D transforms and animation.  As of this writing, Safari 5.0.2 is the only fully compatible browser.  Chrome 7.0.517 does not have full 3D transition support out of the box (though animations and reflection seem correct).
 
-TODO:
+
+===TODO===
 	- improve big moves (of +/- > 1)
 	+ Mask Functionality
 	+ Dynamic loading of new elements
