@@ -12,8 +12,11 @@
 	
 		conf: {  
 			load: true,
-			settingA: 1,
-			settingB: 2
+			perspective_distance: '700px',
+			bezier_x1: 0,
+			bezier_y1: 0.7,
+			bezier_x2: 0.5,
+			bezier_y2: 1.0
 		}
 	};
 	
@@ -34,13 +37,14 @@
 				//Required styles
 				container.css({'width': width, 
 											 '-webkit-transform-origin': '50% 50%', 
-											 '-webkit-perspective': '700px'});
+											 '-webkit-perspective': conf.perspective_distance});
 
 				//TODO: Is there a more efficient way to set this via CSS selector, maybe written to the document?
 				//currently, this adds it to each element individually, which won't persist if an element is added dynamically
 				elements.css({'position': 'absolute', 
 											'left' : '0px', 
-											'bottom': '-100px'});
+											'bottom': '-100px',
+											'-webkit-transition': '-webkit-transform 1s cubic-bezier('+conf.bezier_x1+', '+conf.bezier_y1+', '+conf.bezier_x2+', '+conf.bezier_y2+')'});
 
 				//initialize each element
 				centerElementIndex = Math.floor(elements.length / 2);
