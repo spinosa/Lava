@@ -30,9 +30,9 @@
 			load: true,
 			perspective_distance: '700px',
 			transform_t: '.75s',
-			bezier_x1: 0.1,
+			bezier_x1: 0.2,
 			bezier_y1: 0.9,
-			bezier_x2: 0.1,
+			bezier_x2: 0.2,
 			bezier_y2: 1.0,
 			bind_arrows: true
 		}
