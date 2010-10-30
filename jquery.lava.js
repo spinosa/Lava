@@ -15,7 +15,7 @@
 				n = index - centerElementIndex;
 
 				if( n == 0 ){
-					$(el).css({'-webkit-transform': 'none', 'z-index': '2'});
+					$(el).css({'-webkit-transform': 'none', 'z-index': '3'});
 					$(el).children(maskSelector).hide();
 				} else {
 					signOfN = Math.abs(n)/n;
