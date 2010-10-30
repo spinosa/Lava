@@ -2,13 +2,22 @@
 It's like coverflow.  But it's for sets of HTML elements, using CSS3 (3D transforms and animation) and jQuery.
 
 ===How To Use===
-<div id="wrapper">
-	<div>cover 1</div>
-	<div>cover 2</div>
-	<div>cover 3</div>
+<div id="stage">
+	<div>
+		<div class="mask"></div>
+		cover 1
+	</div>
+	<div>
+		<div class="mask"></div>
+		cover 2
+	</div>
+	<div>
+		<div class="mask"></div>
+		cover 3
+	</div>
 </div>
 
-jQuery('#wrapper').lavaflow();
+jQuery('#stage').lavaflow();
 
 
 ===API===
@@ -22,9 +31,13 @@ perspective_distance: '700px' -- Distance the camera is from the Z-plane.  Great
 
 bezier_x1: 0.1, bezier_y1: 0.9, bezier_x2: 0.1, bezier_y2: 1.0 -- A cubic bezier transition is used there P0 and P3 are implicitly at (0,0) and (1,1) respectively.  Use these parameters to set the location of P1 and P2.
 
-transform_time: '1s' -- Time it takes for the bezier transform to run to completion.
+transform_t: '1s' -- Time it takes for the bezier transform to run to completion.
 
 bind_arrows: true -- If you include jquery.hotkeys (http://github.com/tzuryby/jquery.hotkeys) with your project, the left and right arrows will be bound to sliding the elements left and right.
+
+mask_selector: '.mask' -- As a direct-child of the cover div, a div matching this selector will have it's background set to black with varying opacitiy (via rgba) to give the appearance of covers fading away and dissaperaing.
+
+num_visible: 7 -- Up to this many covers will be shown on each side of the center cover, with any cover beyond this completely blacked out with the mask.
 
 
 ===Limitations===
@@ -33,5 +46,5 @@ Only works with Webkit based browsers (using -webkit- CSS prefixes) that build i
 
 ===TODO===
 	- improve big moves (of +/- > 1)
-	+ Mask Functionality
+	- Mask improvements (eliminate bleed through)
 	+ Dynamic loading of new elements

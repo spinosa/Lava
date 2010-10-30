@@ -6,8 +6,10 @@
 	// defaults & private methods
 	$.lava.lavaflow = {
 	
-		centerElement: function(elements, centerElementIndex, elWidth, maskSelector) {
-			var n, signOfN, transX, rotY;
+		centerElement: function(elements, centerElementIndex, numVisible, maskSelector) {
+			var n, signOfN, transX, rotY,
+				elWidth = elements.first().width();
+				numVisible += 1;
 
 			elements.each( function(index, el){ 
 				n = index - centerElementIndex;
@@ -23,8 +25,7 @@
 					trans = 'translate3d('+transX+'px, 10%, -450px) rotateY('+rotY+'deg)';
 					$(el).css('-webkit-transform', trans);
 					
-					//TODO: determine alpha based on desired max width
-					maskAlpha = .1;
+					maskAlpha = Math.pow(1 - Math.max(numVisible - Math.abs(n),0)/numVisible, 2);
 					$(el).children(maskSelector).show();
 					$(el).children(maskSelector).css('background', 'rgba(0,0,0,'+maskAlpha+')');
 				}
@@ -41,8 +42,8 @@
 			bezier_x2: 0.2,
 			bezier_y2: 1.0,
 			bind_arrows: true,
-			mask_selector: '.mask'
-			
+			mask_selector: '.mask',
+			num_visible: 7
 		}
 	};
 
@@ -51,7 +52,7 @@
 		//private variables
 		var self = this,
 			stage = container,
-			elements = container.children(),
+			elements = stage.children(),
 			width = elements.width(),
 			center = currentCenter = Math.floor(elements.length / 2);
 			
@@ -60,9 +61,9 @@
 			load: function() {
 				
 				//Required styles
-				container.css({'width': width, 
-											 '-webkit-transform-origin': '50% 50%', 
-											 '-webkit-perspective': conf.perspective_distance});
+				stage.css({'width': width, 
+									 '-webkit-transform-origin': '50% 50%', 
+									 '-webkit-perspective': conf.perspective_distance});
 
 				//TODO: Is there a more efficient way to set this via CSS selector, maybe written to the document?
 				//currently, this adds it to each element & mask individually, which won't persist if an element is added dynamically
@@ -98,7 +99,7 @@
 				currentCenter = index;
 				if( currentCenter < 0 ){ currentCenter = 0; }
 				if( currentCenter >= elements.length){ currentCenter = elements.length - 1; }
-				$.lava.lavaflow.centerElement(elements, currentCenter, width, conf.mask_selector);
+				$.lava.lavaflow.centerElement(elements, currentCenter, conf.num_visible, conf.mask_selector);
 				return self;
 			},
 			
