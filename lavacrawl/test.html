@@ -13,19 +13,18 @@
 		<style type="text/css">
 		
 		body {
-			background: black;
+			background: black url('starfield.jpg');
+			margin: 0;
 		}
 		
 		#stage {
-			position: absolute;
-			left: 10%;
-			top: 0;
-			//background: #111;
+			position: absolute; 
+			bottom: 0;
+			width: 100%;
 			
-			
-			width: 700px;
-			overflow-y: hidden;
-			overflow-x: visible;
+			height: 500px;
+			margin-left: auto;
+			margin-right: auto;
 		}
 		
 		#crawl {
@@ -35,12 +34,14 @@
 			
 			color: yellow;
 			font-size: 24px;
+			font-family: 'Helvetica';
 		}
 		
 		#crawl .crawl-text {
 			font-weight: bold;
 			text-align: justify;
 			font-size: 22px;
+			line-height: 28px;
 		}
 		
 		</style>
@@ -51,8 +52,9 @@
 	
 	<div id="stage">
 		<div id="crawl">
-			<p style="text-align: center;">Episode IV</p>
-			<p style="text-align: center;">A NEW HOPE</p>
+			<h3 style="text-align: center;">danspinosa.com</h3>
+			<h2 style="text-align: center;">LAVACRAWL</h2>
+			<br/>
 			<p class="crawl-text">
 				It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
 			</p>

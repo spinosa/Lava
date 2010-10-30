@@ -6,9 +6,9 @@
 	// defaults & private methods
 	$.lava.lavacrawl = {
 	
-		doCrawl: function(crawler, t) {
+		doCrawl: function(crawler, t, finalPosition) {
 			crawler.css({'-webkit-transition': '-webkit-transform '+t+' linear',
-									 '-webkit-transform': 'rotateX(45deg) translate3d(0,-200%,0)'});
+									 '-webkit-transform': 'rotateX(45deg) translate3d(0,'+finalPosition+',0)'});
 		},
 	
 		conf: {  
@@ -30,20 +30,26 @@
 		$.extend(self, {
 			load: function() {
 				
-				//Required styles
-				stage.css({'-webkit-transform-origin': '50% 50%', 
+				//Setup stage perspective
+				stage.css({'overflow': 'hidden',
+									 '-webkit-transform-origin': '50% 50%', 
 									 '-webkit-perspective': conf.perspective_distance});
+				
+				//stage needs to be >= 2x crawler width or crawler may get cut off
+				stage.width(Math.max(stage.width(), 2*crawler.width()));
 
+				//initiate crawler
+				initialY = stage.height()+'px';
 				crawler.css({ 'margin-left' : 'auto', 
 											'margin-right': 'auto',
-											'-webkit-transform': 'rotateX(45deg) translate3d(0,100%,0)'});
+											'-webkit-transform': 'rotateX(45deg) translate3d(0,'+initialY+',0)'});
 									
 				return self;
 			},
 			
 			crawl: function(){
-				//make sure crawler is in starting position before animating
-				setTimeout( function(){ $.lava.lavacrawl.doCrawl(crawler, conf.crawl_t) }, 1);
+				//setTime to make sure crawler is in starting position before animating
+				setTimeout( function(){ $.lava.lavacrawl.doCrawl(crawler, conf.crawl_t, '-200%') }, 1);
 			}
 			
 		});
