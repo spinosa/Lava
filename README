@@ -61,5 +61,4 @@ Put the lavaflow on black and add the following for a nice reflection:
 
 ===TODO===
 	- improve big moves (of +/- > 1)
-	- Mask improvements (eliminate bleed through)
 	+ Dynamic loading of new elements
