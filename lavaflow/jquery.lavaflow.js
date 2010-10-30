@@ -130,7 +130,7 @@
 			$(this).data("lavaflow", el);	
 		});
 		
-		return conf.api ? el: this;		
+		return el;		
 	}; 
 	
 })(jQuery);
