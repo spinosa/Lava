@@ -2,6 +2,7 @@
 It's like coverflow.  But it's for sets of HTML elements, using CSS3 (3D transforms and animation) and jQuery.
 
 ===How To Use===
+HTML:
 <div id="stage">
 	<div>
 		<div class="mask"></div>
@@ -11,13 +12,20 @@ It's like coverflow.  But it's for sets of HTML elements, using CSS3 (3D transfo
 		<div class="mask"></div>
 		cover 2
 	</div>
-	<div>
-		<div class="mask"></div>
-		cover 3
-	</div>
+	...
 </div>
 
-jQuery('#stage').lavaflow();
+CSS:
+	#stage div { width: Npx; }
+	#stage div .mask {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%; height: 100%;
+	}
+
+javascript:
+	jQuery('#stage').lavaflow();
 
 
 ===API===
@@ -35,13 +43,20 @@ transform_t: '1s' -- Time it takes for the bezier transform to run to completion
 
 bind_arrows: true -- If you include jquery.hotkeys (http://github.com/tzuryby/jquery.hotkeys) with your project, the left and right arrows will be bound to sliding the elements left and right.
 
-mask_selector: '.mask' -- As a direct-child of the cover div, a div matching this selector will have it's background set to black with varying opacitiy (via rgba) to give the appearance of covers fading away and dissaperaing.
+mask_selector: '.mask' -- As a direct-child of the cover div, a div matching this selector will have it's background set to black with varying opacitiy (via rgba) to give the appearance of covers fading away and dissapearing.
 
 num_visible: 7 -- Up to this many covers will be shown on each side of the center cover, with any cover beyond this completely blacked out with the mask.
 
 
 ===Limitations===
 Only works with Webkit based browsers (using -webkit- CSS prefixes) that build in CSS3 3D transforms and animation.  As of this writing, Safari 5.0.2 is the only fully compatible browser.  Chrome 7.0.517 does not have full 3D transition support out of the box (though animations and reflection seem correct).
+
+
+===Style Tips===
+Put the lavaflow on black and add the following for a nice reflection:
+#stage div { 
+	-webkit-box-reflect:below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.25, transparent), to(rgba(0,0,0,0.2)));
+}
 
 
 ===TODO===
