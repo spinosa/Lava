@@ -1,0 +1,75 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <meta charset='utf-8' /> 
+    <title>LavaCrawl Test</title>
+
+		<script src="../lib/jquery-1.4.3.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var $j = jQuery.noConflict();
+		</script>
+		<script src="jquery.lavacrawl.js" type="text/javascript"></script>
+		
+		<style type="text/css">
+		
+		body {
+			background: black;
+		}
+		
+		#stage {
+			position: absolute;
+			left: 10%;
+			top: 0;
+			//background: #111;
+			
+			
+			width: 700px;
+			overflow-y: hidden;
+			overflow-x: visible;
+		}
+		
+		#crawl {
+			width: 300px;
+			margin-left: auto;
+			margin-right: auto;
+			
+			color: yellow;
+			font-size: 24px;
+		}
+		
+		#crawl .crawl-text {
+			font-weight: bold;
+			text-align: justify;
+			font-size: 22px;
+		}
+		
+		</style>
+		
+	</head>
+	
+	<body>
+	
+	<div id="stage">
+		<div id="crawl">
+			<p style="text-align: center;">Episode IV</p>
+			<p style="text-align: center;">A NEW HOPE</p>
+			<p class="crawl-text">
+				It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+			</p>
+			<p class="crawl-text">
+				During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.
+			<p class="crawl-text">
+				Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+			</p>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		$j( function() { 
+			$j("#stage").lavacrawl().crawl();
+		});
+	</script>
+		
+	</body>
+	
+</html>
