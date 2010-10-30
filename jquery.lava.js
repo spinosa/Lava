@@ -6,7 +6,7 @@
 	// defaults & private methods
 	$.lava.lavaflow = {
 	
-		centerElement: function(elements, centerElementIndex, width) {
+		centerElement: function(elements, centerElementIndex, elWidth, maskSelector) {
 			var n, signOfN, transX, rotY;
 
 			elements.each( function(index, el){ 
@@ -14,13 +14,19 @@
 
 				if( n == 0 ){
 					$(el).css('-webkit-transform', 'none');
+					$(el).children(maskSelector).hide();
 				} else {
 					signOfN = Math.abs(n)/n;
-					transX = (signOfN * (width * .75)) + (n * width * .3);
+					transX = (signOfN * (elWidth * .75)) + (n * elWidth * .3);
 					rotY = -signOfN * 55;
 
 					trans = 'translate3d('+transX+'px, 10%, -450px) rotateY('+rotY+'deg)';
 					$(el).css('-webkit-transform', trans);
+					
+					//TODO: determine alpha based on desired max width
+					maskAlpha = .1;
+					$(el).children(maskSelector).show();
+					$(el).children(maskSelector).css('background', 'rgba(0,0,0,'+maskAlpha+')');
 				}
 
 			});
@@ -34,7 +40,9 @@
 			bezier_y1: 0.9,
 			bezier_x2: 0.2,
 			bezier_y2: 1.0,
-			bind_arrows: true
+			bind_arrows: true,
+			mask_selector: '.mask'
+			
 		}
 	};
 
@@ -42,6 +50,7 @@
 
 		//private variables
 		var self = this,
+			stage = container,
 			elements = container.children(),
 			width = elements.width(),
 			center = currentCenter = Math.floor(elements.length / 2);
@@ -56,11 +65,14 @@
 											 '-webkit-perspective': conf.perspective_distance});
 
 				//TODO: Is there a more efficient way to set this via CSS selector, maybe written to the document?
-				//currently, this adds it to each element individually, which won't persist if an element is added dynamically
+				//currently, this adds it to each element & mask individually, which won't persist if an element is added dynamically
+				bezier = 'cubic-bezier('+conf.bezier_x1+', '+conf.bezier_y1+', '+conf.bezier_x2+', '+conf.bezier_y2+')';
 				elements.css({'position': 'absolute', 
 											'left' : '0px', 
 											'bottom': '-100px',
-											'-webkit-transition': '-webkit-transform '+conf.transform_t+' cubic-bezier('+conf.bezier_x1+', '+conf.bezier_y1+', '+conf.bezier_x2+', '+conf.bezier_y2+')'});
+											'-webkit-transition': '-webkit-transform '+conf.transform_t+' '+bezier});
+				elements.children(conf.mask_selector).css(
+										 {'-webkit-transition': 'background '+conf.transform_t+' '+bezier});
 
 				//initialization: start with middle element centered
 				self.center();
@@ -86,7 +98,7 @@
 				currentCenter = index;
 				if( currentCenter < 0 ){ currentCenter = 0; }
 				if( currentCenter >= elements.length){ currentCenter = elements.length - 1; }
-				$.lava.lavaflow.centerElement(elements, currentCenter, width);
+				$.lava.lavaflow.centerElement(elements, currentCenter, width, conf.mask_selector);
 				return self;
 			},
 			

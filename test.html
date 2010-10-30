@@ -17,6 +17,7 @@
 				margin: 5em;
 				background: black;
 			}
+			#show_width { background: green; height: 10px; width: 1000px;} 
 			#stage {
 				position: absolute;
 				top: 200px;
@@ -25,7 +26,6 @@
 			
 			#stage div { 
 				width: 200px; 
-				border: 1px solid black; 
 				-webkit-transform-style: preserve-3d;
 				-webkit-border-radius: 10px; 
 				-webkit-box-reflect:below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.25, transparent), to(rgba(0,0,0,0.2)));
@@ -50,7 +50,7 @@
 			#r2 { -webkit-transform: translate3d(275px, 0px, -250px) rotateY(-55deg); }
 			#r3 { -webkit-transform: translate3d(350px, 0px, -250px) rotateY(-55deg); }
 			
-			/* Masks */
+			/* Masks
 			#l3 .mask { background: rgba(0,0,0,0.8); }
 			#l2 .mask { background: rgba(0,0,0,0.2); }
 			#l1 .mask { background: rgba(0,0,0,0.05); }
@@ -58,6 +58,7 @@
 			#r1 .mask { background: rgba(0,0,0,0.05); }
 			#r2 .mask { background: rgba(0,0,0,0.2); }
 			#r3 .mask { background: rgba(0,0,0,0.8); }
+			*/
 			
 			
 				/* Animations... */
@@ -92,6 +93,8 @@
 	</head>
 	
 	<body>
+		<div id="show_width">&nbsp;</div>
+
 		<div id="stage">
 			
 			<div id="l3">
@@ -255,7 +258,7 @@
 		
 		<script type="text/javascript">
 			$j( function() { 
-				$j("#stage").lavaflow({bezier_x1: 0.2, bezier_y1: 0.9, bezier_x2: 0.2, bezier_y2: 1.0});
+				$j("#stage").lavaflow();
 			});
 		</script>
 		
