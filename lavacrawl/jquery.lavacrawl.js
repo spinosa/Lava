@@ -6,15 +6,16 @@
 	// defaults & private methods
 	$.lava.lavacrawl = {
 	
-		doCrawl: function(crawler, t, finalPosition) {
+		doCrawl: function(crawler, t, finalPosition, transZ) {
 			crawler.css({'-webkit-transition': '-webkit-transform '+t+' linear',
-									 '-webkit-transform': 'rotateX(45deg) translate3d(0,'+finalPosition+',0)'});
+									 '-webkit-transform': 'rotateX(45deg) translate3d(0,'+finalPosition+','+transZ+')'});
 		},
 	
 		conf: {  
 			load: true,
 			auto_crawl: false,
 			perspective_distance: '400px',
+			trans_z: '300px',
 			crawl_t: '60s'
 		}
 	};
@@ -30,6 +31,8 @@
 		$.extend(self, {
 			load: function() {
 				
+				//TODO: perspective_distance and trans_z should be based on height on stage
+				
 				//Setup stage perspective
 				stage.css({'overflow': 'hidden',
 									 '-webkit-transform-origin': '50% 50%', 
@@ -42,14 +45,14 @@
 				initialY = stage.height()+'px';
 				crawler.css({ 'margin-left' : 'auto', 
 											'margin-right': 'auto',
-											'-webkit-transform': 'rotateX(45deg) translate3d(0,'+initialY+',0)'});
+											'-webkit-transform': 'rotateX(45deg) translate3d(0,'+initialY+','+conf.trans_z+')'});
 									
 				return self;
 			},
 			
 			crawl: function(){
 				//setTime to make sure crawler is in starting position before animating
-				setTimeout( function(){ $.lava.lavacrawl.doCrawl(crawler, conf.crawl_t, '-200%') }, 1);
+				setTimeout( function(){ $.lava.lavacrawl.doCrawl(crawler, conf.crawl_t, '-100%', conf.trans_z) }, 1);
 			}
 			
 		});
