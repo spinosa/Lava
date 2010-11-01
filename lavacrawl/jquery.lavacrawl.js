@@ -6,16 +6,17 @@
 	// defaults & private methods
 	$.lava.lavacrawl = {
 	
-		doCrawl: function(crawler, t, finalPosition, transZ) {
+		doCrawl: function(t, cameraDistance, rotation, stageHeight, finalPosition) {
 			crawler.css({'-webkit-transition': '-webkit-transform '+t+' linear',
-									 '-webkit-transform': 'rotateX(45deg) translate3d(0,'+finalPosition+','+transZ+')'});
+									 '-webkit-transform': 'translate3d(0,0,'+cameraDistance+') translateY('+stageHeight+'px) rotateX('+rotation+') translateY('+finalPosition+')'});
 		},
 	
 		conf: {  
 			load: true,
 			auto_crawl: true,
 			perspective_distance: '400px',
-			trans_z: '300px',
+			camera_distance: '330px',
+			rotation: '30deg',
 			crawl_t: '60s'
 		}
 	};
@@ -25,36 +26,36 @@
 		//private variables
 		var self = this,
 			stage = container,
+			stageHeight = stage.height();
 			crawler = stage.children().first();
 			
 		//API methods
 		$.extend(self, {
 			load: function() {
 				
-				//TODO: perspective_distance and trans_z should be based on height of stage
-				
 				//Setup stage perspective
-				stage.css({'overflow': 'hidden',
-									 '-webkit-transform-origin': '50% 50%', 
+				stage.css({'-webkit-transform-origin': '50% 100%', 
 									 '-webkit-perspective': conf.perspective_distance});
+				
+				crawler.css({'-webkit-transform-origin': '50% 0'});
 				
 				//stage needs to be >= 2x crawler width or crawler may get cut off
 				if( stage.width() < 2*crawler.width()){
 					stage.width(2*crawler.width());
 				}
 
-				//initiate crawler
-				initialY = stage.height()+'px';
+				
+				//setup crawler perspective
 				crawler.css({ 'margin-left' : 'auto', 
 											'margin-right': 'auto',
-											'-webkit-transform': 'rotateX(45deg) translate3d(0,'+initialY+','+conf.trans_z+')'});
+											'-webkit-transform': 'translate3d(0,0,'+conf.camera_distance+') translateY('+stageHeight+'px) rotateX('+conf.rotation+')'});
 									
 				return self;
 			},
 			
 			crawl: function(){
 				//setTime to make sure crawler is in starting position before animating
-				setTimeout( function(){ $.lava.lavacrawl.doCrawl(crawler, conf.crawl_t, '-100%', conf.trans_z) }, 1);
+				setTimeout( function(){ $.lava.lavacrawl.doCrawl(conf.crawl_t, conf.camera_distance, conf.rotation, stageHeight, -2*crawler.height()+'px') }, 1);
 			}
 			
 		});

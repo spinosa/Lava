@@ -1,5 +1,5 @@
 ===lavacrawl===
-A crawling a div, star wars opening style.
+A crawling a div, star wars opening style.  Designed for use with the full browser.
 
 ===How To Use===
 HTML:
@@ -28,14 +28,24 @@ autoCrawl: true -- Start the crawl immediately.  If set to false, use .crawl() t
 crawl_t: '60s' -- Time it takes for the crawl to run to completion.
 
 
-
 ===Limitations===
 Only works with Webkit based browsers (using -webkit- CSS prefixes) that build in CSS3 3D transforms and animation.  As of this writing, Safari 5.0.2 is the only fully compatible browser.  Chrome 7.0.517 does not have full 3D transition support out of the box.
+
+Stage cannot present children in 3D space when overflow is set to hidden, see http://www.w3.org/TR/css3-3d-transforms/#transform-style
 
 
 ===Style Tips===
 Put the lavacrawl on a starfield background for a classic Star Wars style effect.
 
+body { margin: 0; }
+
+#stage {
+	position: absolute; 
+	bottom: 0;
+	width: 100%;
+	
+	height: 700px;
+}
+
 
 ===TODO===
-	- algorithmically determine perspective_distance and trans_z based on stage height.
