@@ -1,0 +1,41 @@
+===lavacrawl===
+A crawling a div, star wars opening style.
+
+===How To Use===
+HTML:
+<div id="stage">
+	<div id="crawl">
+		...arbitrary content to crawl...
+	</div>
+</div>
+
+CSS:
+	#stage { height: Npx; }
+	#crawl { width: Zpx; }
+
+javascript:
+	jQuery('#stage').lavacrawl().crawl();
+
+===API===
+lavacrawl is architected like jQuery Tools.  The initial call to lavacrawl() initializes the plugin, configuration parameters can be passed in as a hash.  All calls to lavacrawl() return the lavacrawl API which can be used to chain additional calls, like crawl(), which starts the animation when {autoCrawl:false} is set as a configuration parameter.
+
+
+===Configure===
+load: true -- Autoload and init the plugin.  If set to false, you must call lavacrawl().load() manually.
+
+autoCrawl: true -- Start the crawl immediately.  If set to false, use .crawl() to manually start the crawling.
+
+crawl_t: '60s' -- Time it takes for the crawl to run to completion.
+
+
+
+===Limitations===
+Only works with Webkit based browsers (using -webkit- CSS prefixes) that build in CSS3 3D transforms and animation.  As of this writing, Safari 5.0.2 is the only fully compatible browser.  Chrome 7.0.517 does not have full 3D transition support out of the box.
+
+
+===Style Tips===
+Put the lavacrawl on a starfield background for a classic Star Wars style effect.
+
+
+===TODO===
+	- algorithmically determine perspective_distance and trans_z based on stage height.

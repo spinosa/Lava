@@ -13,7 +13,7 @@
 	
 		conf: {  
 			load: true,
-			auto_crawl: false,
+			auto_crawl: true,
 			perspective_distance: '400px',
 			trans_z: '300px',
 			crawl_t: '60s'
@@ -31,7 +31,7 @@
 		$.extend(self, {
 			load: function() {
 				
-				//TODO: perspective_distance and trans_z should be based on height on stage
+				//TODO: perspective_distance and trans_z should be based on height of stage
 				
 				//Setup stage perspective
 				stage.css({'overflow': 'hidden',
@@ -39,7 +39,9 @@
 									 '-webkit-perspective': conf.perspective_distance});
 				
 				//stage needs to be >= 2x crawler width or crawler may get cut off
-				stage.width(Math.max(stage.width(), 2*crawler.width()));
+				if( stage.width() < 2*crawler.width()){
+					stage.width(2*crawler.width());
+				}
 
 				//initiate crawler
 				initialY = stage.height()+'px';
