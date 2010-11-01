@@ -60,5 +60,6 @@ Put the lavaflow on black and add the following for a nice reflection:
 
 
 ===TODO===
+	- detect click of mask and center that element
 	- improve big moves (of +/- > 1)
 	+ Dynamic loading of new elements
