@@ -23,65 +23,31 @@
 			} 
 			#stage {
 				position: absolute;
-				top: 70px;
+				top: 120px;
 				left: 40%;
 			}
 			
 			#stage div { 
-				width: 200px;
+				width: 220px;
+				padding: 0px 5px;
 				-webkit-border-radius: 10px; 
 				-webkit-box-reflect:below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.25, transparent), to(rgba(0,0,0,0.2)));
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffa84c), color-stop(100%,#ff7b0d));
 			}
-			#stage > :nth-child(odd) { background: red; }
-			#stage > :nth-child(even) { background: blue; }
+			#stage div.active { border: 1px solid black; }
+			#stage > :nth-child(odd) { }
+			#stage > :nth-child(even) { }
 			
 			#stage div .mask {
 				position: absolute;
 				left: 0;
 				top: 0;
+				padding: 0;
 				width: 100%; height: 100%;
 			}
 			
 			
-			/* Elements
-			#l3 { -webkit-transform: translate3d(-350px, 0px, -250px) rotateY(55deg); }
-			#l2 { -webkit-transform: translate3d(-275px, 0px, -250px) rotateY(55deg); }
-			#l1 { -webkit-transform: translate3d(-200px, 0px, -250px) rotateY(55deg); }
-			#c { }
-			#r1 { -webkit-transform: translate3d(200px, 0px, -250px) rotateY(-55deg); }
-			#r2 { -webkit-transform: translate3d(275px, 0px, -250px) rotateY(-55deg); }
-			#r3 { -webkit-transform: translate3d(350px, 0px, -250px) rotateY(-55deg); }
-			
-			/* Masks
-			#l3 .mask { background: rgba(0,0,0,0.8); }
-			#l2 .mask { background: rgba(0,0,0,0.2); }
-			#l1 .mask { background: rgba(0,0,0,0.05); }
-			#c .mask { display: none; }
-			#r1 .mask { background: rgba(0,0,0,0.05); }
-			#r2 .mask { background: rgba(0,0,0,0.2); }
-			#r3 .mask { background: rgba(0,0,0,0.8); }
-			*/
-			
-			
-				/* Animations... */
-				#stage div { 
-					/* cubic-bezier(x1, y1, x2, y2) where P0 and P1 are (0,0) and (1,1) repectively */
-					/* -webkit-transition: -webkit-transform 1s cubic-bezier(0, 0.7, 0.5, 1.0); */
-				}
-				.far_left { 
-					-webkit-transform: translateZ(-250px) translateX(-335px) rotateY(55deg) translateZ(3px) !important;
-				}
-			
-			
-			/*
-				
-			.mask {
-				position: absolute;
-				left: 0; top: 0;
-				width: 100%; height: 100%;
-			}
-			 
-			*/
+
 			
 		</style>
 		
@@ -92,163 +58,173 @@
 
 		<div id="stage-wrapper">
 			<div id="stage">
-			
-				<div id="l3">
-					<div class="mask"></div>
-					<h1>L3</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
-				</div>
-			
-				<div id="l2">
-					<div class="mask"></div>
-					<h1>L2</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
-				</div>
-			
-				<div id="l1">
-					<div class="mask"></div>
-					<h1>L1</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>DAN</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
-				</div>
-			
-				<div id="c">
-					<div class="mask"></div>
-					<h1>Hey baby</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
-				</div>
-			
-				<div id="r1">
-					<div class="mask"></div>
-					<h1>R1</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
-				</div>
-			
-				<div id="r2">
-					<div class="mask"></div>
-					<h1>R2</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
-				</div>
-			
-				<div id="r3">
-					<div class="mask"></div>
-					<h1>R3</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
-				</div>
-			
+
 				<div>
 					<div class="mask"></div>
-					<h1>EXTRA</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
 				</div>
-			
+				
 				<div>
 					<div class="mask"></div>
-					<h1>EXTRA</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
 				</div>
-			
+				
 				<div>
 					<div class="mask"></div>
-					<h1>EXTRA</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
 				</div>
-			
+				
 				<div>
 					<div class="mask"></div>
-					<h1>EXTRA</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
 				</div>
-			
+				
 				<div>
 					<div class="mask"></div>
-					<h1>EXTRA</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
 				</div>
-			
+				
 				<div>
 					<div class="mask"></div>
-					<h1>EXTRA</h1>
-					<p>The quick brown fox jumped over the lazy dog</p>
-					<ol>
-						<li>Daniel</li>
-						<li>john</li>
-						<li>Peter</li>
-						<li>$pinosa</li>
-					</ol>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
 				</div>
-			
+				
+				<div>
+					<div class="mask"></div>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
+				</div>
+				
+				<div>
+					<div class="mask"></div>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
+				</div>
+				
+				<div>
+					<div class="mask"></div>
+						<h1>Hack and Tell</h1>
+						<p>is brought to you buy the letter Z and the number 0x1A</p>
+						<ol>
+							<li>danspinosa.com</li>
+							<li><input type='text'/></li>
+							<li><input type="submit"/></li>
+						</ol>
+				</div>		
+				
+					<div>
+							<div class="mask"></div>
+								<h1>Hack and Tell</h1>
+								<p>is brought to you buy the letter Z and the number 0x1A</p>
+								<ol>
+									<li>danspinosa.com</li>
+									<li><input type='text'/></li>
+									<li><input type="submit"/></li>
+								</ol>
+						</div>
+						
+						<div>
+							<div class="mask"></div>
+								<h1>Hack and Tell</h1>
+								<p>is brought to you buy the letter Z and the number 0x1A</p>
+								<ol>
+									<li>danspinosa.com</li>
+									<li><input type='text'/></li>
+									<li><input type="submit"/></li>
+								</ol>
+								<p>This one is<br/>much taller</p>
+						</div>
+
+						<div>
+							<div class="mask"></div>
+								<h1>Hack and Tell</h1>
+								<p>is brought to you buy the letter Z and the number 0x1A</p>
+								<ol>
+									<li>danspinosa.com</li>
+									<li><input type='text'/></li>
+									<li><input type="submit"/></li>
+								</ol>
+								<p>This is a bit taller</p>
+						</div>
+
+						<div>
+							<div class="mask"></div>
+								<h1>Hack and Tell</h1>
+								<p>is brought to you buy the letter Z and the number 0x1A</p>
+								<ol>
+									<li>danspinosa.com</li>
+									<li><input type='text'/></li>
+									<li><input type="submit"/></li>
+								</ol>
+						</div>
+
+						<div>
+							<div class="mask"></div>
+								<h1>Hack and Tell</h1>
+								<p>is brought to you buy the letter Z and the number 0x1A</p>
+								<ol>
+									<li>danspinosa.com</li>
+									<li><input type='text'/></li>
+									<li><input type="submit"/></li>
+								</ol>
+						</div>
+						
+						<div>
+							<div class="mask"></div>
+								<h1>Hack and Tell</h1>
+								<p>is brought to you buy the letter Z and the number 0x1A</p>
+								<ol>
+									<li>danspinosa.com</li>
+									<li><input type='text'/></li>
+									<li><input type="submit"/></li>
+								</ol>
+						</div>
 			
 			</div>
 		</div>

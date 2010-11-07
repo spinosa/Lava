@@ -16,6 +16,7 @@
 
 				if( n == 0 ){
 					$(el).css({'-webkit-transform': 'none', 'z-index': '3'});
+					$(el).addClass("active");
 					$(el).children(maskSelector).hide();
 				} else {
 					signOfN = Math.abs(n)/n;
@@ -24,6 +25,7 @@
 
 					trans = 'translate3d('+transX+'px, 10%, -450px) rotateY('+rotY+'deg)';
 					$(el).css('-webkit-transform', trans);
+					$(el).removeClass("active");
 					
 					maskAlpha = Math.pow(1 - Math.max(numVisible - Math.abs(n),0)/numVisible, 2);
 					$(el).children(maskSelector).show();
