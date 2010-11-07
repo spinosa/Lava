@@ -15,14 +15,15 @@
 		body {
 			background: black url('starfield.jpg');
 			margin: 0;
+			overflow: hidden;
 		}
 		
 		#stage {
 			position: absolute; 
-			top: 0;
+			bottom: 0;
 			width: 100%;
 			
-			height: 700px;
+			height: 600px;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -54,19 +55,23 @@
 			<h2 style="text-align: center;">LAVACRAWL</h2>
 			<br/>
 			<p class="crawl-text">
+				Thanks to Andrew and the Hack and Tell community for giving me the opportunity to present this evening.
+			</p>
+			<p class="crawl-text">
 				It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
 			</p>
 			<p class="crawl-text">
 				During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet.
+			</p>
 			<p class="crawl-text">
 				Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
 			</p>
 		</div>
 	</div>
-	
+
 	<script type="text/javascript">
 		$j( function() { 
-			$j("#stage").lavacrawl();
+			$j("#stage").lavacrawl({crawl_t: '90s'});
 		});
 	</script>
 		
